@@ -13,7 +13,7 @@ mongoose.connection.on('error', (err) => {
 
 // import models
 // Tweet
-require('./models/Tweet');
+require('./models/Tweets');
 // User
 require('./models/User');
 
