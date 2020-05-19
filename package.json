@@ -1,0 +1,58 @@
+{
+  "name": "top-links",
+  "version": "1.0.0",
+  "description": "Assembly take-home challenge",
+  "main": "index.js",
+  "scripts": {
+    "watch": "nodemon ./server/index.js",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javi-aire/top-links.git"
+  },
+  "author": "Javier Williams",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/javi-aire/top-links/issues"
+  },
+  "homepage": "https://github.com/javi-aire/top-links#readme",
+  "dependencies": {
+    "connect-mongo": "^3.2.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.4.1",
+    "md5": "^2.2.1",
+    "mongodb": "^3.5.7",
+    "mongoose": "^5.9.14",
+    "mongoose-mongodb-errors": "0.0.2",
+    "node-fetch": "^2.6.0",
+    "oauth": "^0.9.15",
+    "passport": "^0.4.1",
+    "passport-twitter": "^1.0.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "validator": "^13.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "autoprefixer": "^9.7.6",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "nodemon": "^2.0.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2"
+  }
+}
