@@ -2,16 +2,28 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const auth = require('../handlers/auth');
+const CLIENT_HOME_PAGE_URL = 'http://localhost:3000';
 
-router.get('/auth/twitter', passport.authenticate('twitter'));
+router.get('/twitter', passport.authenticate('twitter'));
 
-router.get('/auth/twitter/callback',
-	passport.authenticate('twitter', { failureRedirect: '/login '}), 
-	(req, res, next) => {
-		res.redirect(`/timeline/${req.user.id}`);
-	}
+router.get('/twitter/redirect',
+	passport.authenticate('twitter', { 
+		successRedirect: CLIENT_HOME_PAGE_URL,
+		failureRedirect: '/auth/login/failed'
+	})
 );
 
-router.get('/timeline/:id', auth.getHomeTimeline)
+router.get('/login/success', ({ user, cookies }, res) => {
+	if(user){
+		res.json({
+			success: true,
+			message: "User successfully authenticated",
+			user,
+			cookies 
+		});
+	} 
+});
+
+// router.get('/timeline/:id', auth.getHomeTimeline)
 
 module.exports = router;
