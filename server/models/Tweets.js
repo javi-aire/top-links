@@ -3,11 +3,16 @@ const Schema = mongoose.Schema;
 const mongodbErrorHandler = require('mongoose-mongodb-errors');
 
 const tweetSchema = new mongoose.Schema({
-	tweet: {
-		type: Object
+	tweets_home: {
+		type: Array,
+	},
+	twitterId: {
+		type: String,
+		unique: true,
+		trim: true		
 	}
 });
 
 tweetSchema.plugin(mongodbErrorHandler);
 
-module.exports = Tweet = mongoose.model('Tweet', tweetSchema);
+module.exports = Tweets = mongoose.model('Tweets', tweetSchema);

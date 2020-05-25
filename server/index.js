@@ -13,13 +13,13 @@ mongoose.connection.on('error', (err) => {
 
 // import models
 // Tweet
-require('./models/Tweet');
+require('./models/Tweets');
 // User
 require('./models/User');
 
 // start app
 const app = require('./app');
-app.set('port', process.env.PORT || 3005);
+app.set('port', process.env.PORT || 7000);
 const server = app.listen(app.get('port'), () => {
 	console.log(`Express listening on port ${server.address().port}`);
 })

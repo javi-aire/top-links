@@ -1,23 +1,8 @@
+// TODO rename file lol
 const User = require('../models/User');
-const fetch = require('node-fetch');
+const mongoose = require('mongoose');
+const Tweets = mongoose.model('Tweets');
 const OAuth = require('oauth');
-const passport = require('passport');
-
-
-exports.getAccessToken = async (req, res, next) => {
-	// uses the tokens from req.query
-	// to make a POST request to https://api.twitter.com/oauth/access_token
-	const { oauth_token, oauth_verifier } = req.query;
-
-
-	let accessToken = await fetch(`https://api.twitter.com/oauth/access_token?oauth_consumer_key=${tokenParams.oauth_consumer_key}&oauth_token=${tokenParams.oauth_token}&oauth_verifier=${tokenParams.oauth_verifier}`, {
-		mode: 'POST'
-	});
-	// let response = await accessToken.json();
-	// console.log('response:', accessToken);
-	next();
-};
-
 
 exports.getHomeTimeline = async (req, res, next) => {
 	let { user_token, user_secret } = await User.findOne({ twitterId: req.params.id});
@@ -33,11 +18,27 @@ exports.getHomeTimeline = async (req, res, next) => {
 	);
 	oauth.get('https://api.twitter.com/1.1/statuses/home_timeline.json', user_token, user_secret, 
 		function(e, data, resp) { 
+			Tweets.findOne({ twitterId: req.params.id },
+				function(err, tweets) {
+					if (err) return err;
+
+					if(!tweets){
+						tweets = new Tweets({
+							twitterId: req.params.id,
+							tweets_home: data
+						});
+						tweets.save(function(err) {
+							if (err) console.error(err)
+							return;
+						})	
+					} else {
+						return;
+					}
+				}
+			)
 			if(e) console.error(e);
 			data = JSON.parse(data);
 			res.json(data);
 		}
 	);
-
-	// res.send(`<h1>Hello World!</h1>`);
 };
