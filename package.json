@@ -41,7 +41,7 @@
     "passport-twitter": "^1.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "validator": "^13.0.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
