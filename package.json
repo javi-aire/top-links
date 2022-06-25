@@ -35,7 +35,7 @@
     "mongodb": "^3.5.7",
     "mongoose": "^5.9.14",
     "mongoose-mongodb-errors": "0.0.2",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "oauth": "^0.9.15",
     "passport": "^0.4.1",
     "passport-twitter": "^1.0.4",
